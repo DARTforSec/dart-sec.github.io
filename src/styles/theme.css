@@ -16,7 +16,7 @@
 	/* Theme Shapes */
 	/* Set this to 0 if you want all of the rounded cards, images, etc to be straight edges */
 	--theme-shape-radius: clamp(1rem, 2rem, 3rem);
-	--theme-button-border-radius: 3rem;
+	--theme-button-border-radius: 0rem;
 
 	/* Theme Transition */
 	--theme-transition: 0.2s ease-in-out;
@@ -31,10 +31,8 @@
 	--theme-blog-post-header-width: 1200px;
 
 	/* Theme Fonts */
-	--theme-font-family-serif: 'Roboto Serif', Georgia, Cambria, 'Times New Roman',
-		Times, serif;
-	--theme-font-family-sans: 'Lato', -apple-system, BlinkMacSystemFont,
-		sans-serif;
+	--theme-font-family-serif: 'Raleway';
+	--theme-font-family-sans: 'Raleway';
 }
 
 [data-theme='default'] {
@@ -127,21 +125,20 @@
 	--theme-on-surface-2: #ffffff;
 }
 
-[data-theme='sand'] {
+
+[data-theme='dartsec'] {
 	/* Theme Colors */
 	/* Theme Colors */
-	--theme-primary: #e38a20;
-	--theme-primary-hover: #eb870f;
+	--theme-primary: #572872;
+	--theme-primary-hover: #9664b9;
 	--theme-on-primary: hsl(0, 0%, 100%);
 
-	--theme-bg: #fffffe;
-	--theme-on-bg: #5e4536;
+	--theme-bg: #fafafa;
+	--theme-on-bg: #0c0d0d;
 
-	--theme-surface-1: #ffecd9;
-	--theme-on-surface-1: #5e4536;
+	--theme-surface-1: #eef1f3;
+	--theme-on-surface-1: #0c0d0d;
 
-	--theme-surface-2: #6a4d34;
+	--theme-surface-2: #072650;
 	--theme-on-surface-2: #ffffff;
-
-	--theme-button-border-radius: 0.5rem;
 }

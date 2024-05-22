@@ -8,6 +8,7 @@ import {
 	blueThemeIcon,
 	orangeThemeIcon,
 } from './icons';
+import { isLogLevelEnabled } from 'astro/dist/core/logger/core';
 
 const themes = [
   {
@@ -34,6 +35,11 @@ const themes = [
     name: 'sand',
     icon: orangeThemeIcon,
     label: 'Sand',
+  },
+  {
+	name: 'dartsec',
+	icon: blueThemeIcon,
+	label: 'DARTSEC',
   }
 ]
 
