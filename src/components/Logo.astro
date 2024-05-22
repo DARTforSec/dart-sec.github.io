@@ -2,21 +2,44 @@
 ---
 
 <p class="dartsec-logo">
-	<img class="dartsec-logo" src="/logo.png" alt="DARTSEC Logo">
-
+  <img class="dartsec-logo" src="/logo.png" alt="DARTSEC Logo">
 </p>
-  
 
 <style>
-	.dartsec-logo {
-  width: 40%; /* or a specific width */
-  height: auto; /* maintains aspect ratio */
-  margin: 0;
-  transition: all 0.2s ease-in-out;
-}
+  /* Base styles for all screens */
+  .dartsec-logo {
+    width: 40%;
+    height: auto;
+    margin: 0;
+    transition: all 0.2s ease-in-out;
+  }
 
-.dartsec-logo:hover {
-  width: 41%;
-  cursor: pointer;
-}
+  /* Hover effect for all screens */
+  .dartsec-logo:hover {
+    width: 41%;
+    cursor: pointer;
+  }
+
+  /* Media queries for different screen sizes */
+
+  /* Small screens (portrait and landscape) */
+  @media only screen and (max-width: 767px) {
+    .dartsec-logo {
+      width: 70%; /* Adjust width for smaller screens */
+    }
+  }
+
+  /* Medium screens (portrait and landscape) */
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    .dartsec-logo {
+      width: 50%; /* Adjust width for medium screens */
+    }
+  }
+
+  /* Large screens (desktops) */
+  @media only screen and (min-width: 992px) {
+    .dartsec-logo {
+      width: 40%; /* Use base width for larger screens */
+    }
+  }
 </style>

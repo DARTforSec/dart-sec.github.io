@@ -99,9 +99,9 @@ export class ThemeSwitcher extends LitElement {
 		} else {
     	// Set default theme to dark if the operating system specifies this preference
 			if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-				this._setTheme('dark');
+				this._setTheme('dartsec');
 			} else{ // Set to default/light theme if no specification, or light theme is specified
-				this._setTheme('default');
+				this._setTheme('dartsec');
 			}
     		
     }
@@ -118,17 +118,21 @@ export class ThemeSwitcher extends LitElement {
 		if (theme === 'default') {
 			_heroImage.src = '/assets/images/home/classic-hero.jpg';
 		}
-		if (theme === 'dark') {
+		else if (theme === 'dark') {
 			_heroImage.src = '/assets/images/home/dark-hero.jpg';
 		}
-		if (theme === 'earth') {
+		else if (theme === 'earth') {
 			_heroImage.src = '/assets/images/home/earth-hero.jpg';
 		}
-		if (theme === 'ocean') {
+		else if (theme === 'ocean') {
 			_heroImage.src = '/assets/images/home/ocean-hero.jpg';
 		}
-		if (theme === 'sand') {
+		else if (theme === 'sand') {
 			_heroImage.src = '/assets/images/home/sand-hero.jpg';
+		}
+		else
+		{
+			_heroImage.src = '/assets/images/home/themeDart.png';
 		}
 		localStorage.setItem('theme', theme);
 		this.theme = theme;

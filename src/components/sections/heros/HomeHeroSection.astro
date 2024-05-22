@@ -4,72 +4,56 @@ import { Container, Button } from '@components/odyssey-theme';
 import settings from '../../../config/settings.js';
 import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
 ---
-
 <Container>
-	<section class="hero-section__section">
-		<div class="hero-section__text">
-				<h1>DARTSEC</h1>
-				<p>
-					A Cyber Security Startup founded by enthusiastic student researchers and their esteemed professor setting new standards in the realm of digital security.
-				</p>
-				<div class="hero-btns__container">
-					<Button href="/theme/get-started" customIcon
-						>Get Started
-            <Fragment slot="icon">
-              <Icon name="ic:baseline-chevron-right"/>
-            </Fragment>
-            </Button
-					>
-					<Button href="/theme/style-guide" unelevated>Style Guide</Button>
-				</div>
-        {settings.enableThemeSwitcher && <ThemeSwitcher client:only/>}
-		</div>
-		<div class="hero-section__image">
-				<picture>
-					<img
-						src="/assets/images/home/classic-hero.jpg"
-						alt="Astro Odyssey"
-						id="home-hero-image"
-					/>
-				</picture>
-		</div>
-	</section>
+  <section class="hero-section__section">
+    <div class="hero-section__text">
+      <h1 id="main_head">DARTSEC</h1>
+      <p>
+        A Cyber Security Startup founded by enthusiastic student researchers and
+        their esteemed professor setting new standards in the realm of digital security.
+      </p>
+      <div class="hero-btns__container">
+        <Button href="/theme/get-started" customIcon>
+          Get Started
+          <Fragment slot="icon">
+            <Icon name="ic:baseline-chevron-right" />
+          </Fragment>
+        </Button>
+      </div>
+      {settings.enableThemeSwitcher && <ThemeSwitcher client:only />}
+    </div>
+  </section>
 </Container>
 
 <style>
-	.hero-section__section {
-		margin: var(--section-margin) auto;
-		min-height: clamp(90vh, 100vw, calc(100vh - var(--navbar-height)));
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		align-items: center;
-		gap: 1rem;
-	}
-	.hero-section__text {
-		justify-self: center;
-		max-width: 25rem;
-	}
-	.hero-btns__container {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-	}
-	.hero-btns__container {
-		margin-right: 1rem;
-	}
-	.hero-section__image {
-		display: flex;
-	}
-	.hero-section__image img {
-		width: 100%;
-		height: 100%;
-		max-height: 80vh;
-		object-fit: cover;
-		border-radius: var(--theme-shape-radius);
-	}
-	@media (max-width: 768px) {
-		.hero-section__section {
-			grid-template-columns: 1fr;
-		}
-	}
+  #main_head {
+    color: var(--theme-primary);
+  }
+  .hero-section__section {
+    margin: var(--section-margin) auto;
+    width: 100%;
+    min-height: clamp(90vh, 100vw, calc(100vh - var(--navbar-height)));
+    text-align: center;
+  }
+  .hero-section__text {
+    justify-self: center;
+  }
+
+  /* Choose either Method 1 or Method 2: */
+
+  /* Method 1 (Flexbox) */
+  .hero-btns__container {
+    margin: var(--section-margin) auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Method 2 (`margin: 0 auto`) */
+  /* .hero-btns__container {
+    margin: 0 auto;  // Uncomment if using this method
+  } */
+
+  @media (max-width: 768px) {
+    .hero-section__section {}
+  }
 </style>
