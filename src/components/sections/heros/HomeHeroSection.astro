@@ -31,6 +31,33 @@ const clients = [
 
 <Container>
   <section class="hero-section">
+    <div class="graph-animation">
+      <svg viewBox="0 0 800 400" preserveAspectRatio="none">
+        <!-- Define circles (nodes) -->
+        <circle class="node" cx="100" cy="100" r="5" />
+        <circle class="node" cx="300" cy="150" r="5" />
+        <circle class="node" cx="500" cy="200" r="5" />
+        <circle class="node" cx="700" cy="100" r="5" />
+        <circle class="node" cx="200" cy="300" r="5" />
+        <circle class="node" cx="400" cy="250" r="5" />
+        <circle class="node" cx="600" cy="350" r="5" />
+        <!-- Add more nodes -->
+        <circle class="node" cx="150" cy="250" r="5" />
+        <circle class="node" cx="250" cy="50" r="5" />
+        <circle class="node" cx="350" cy="300" r="5" />
+        <!-- Define lines (edges) -->
+        <line class="edge" x1="100" y1="100" x2="300" y2="150" />
+        <line class="edge" x1="300" y1="150" x2="500" y2="200" />
+        <line class="edge" x1="500" y1="200" x2="700" y2="100" />
+        <line class="edge" x1="100" y1="100" x2="200" y2="300" />
+        <line class="edge" x1="200" y1="300" x2="400" y2="250" />
+        <line class="edge" x1="400" y1="250" x2="600" y2="350" />
+        <line class="edge" x1="600" y1="350" x2="700" y2="100" />
+        <!-- Add more edges -->
+        <line class="edge" x1="150" y1="250" x2="250" y2="50" />
+        <line class="edge" x1="250" y1="50" x2="350" y2="300" />
+      </svg>
+    </div>
     <div class="hero-text">
       <h1 id="main-head">DARTSEC</h1>
       <p>
@@ -60,7 +87,40 @@ const clients = [
       heroSection.style.setProperty('--navbar-height', `${navbarHeight}px`);
     }
   });
+  document.addEventListener('DOMContentLoaded', function() {
+    const nodes = document.querySelectorAll('.node');
+    const edges = document.querySelectorAll('.edge');
+
+    nodes.forEach((node, index) => {
+      const delay = Math.random() * 2; // Random delay between 0 and 2 seconds
+      node.style.setProperty('--animation-delay', `${delay}s`);
+      
+      node.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.5)';
+      });
+
+      node.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+      });
+    });
+
+    edges.forEach((edge, index) => {
+      const delay = Math.random() * 2; // Random delay between 0 and 2 seconds
+      edge.style.setProperty('--animation-delay', `${delay}s`);
+    });
+
+    edges.forEach(edge => {
+      edge.addEventListener('mouseenter', function() {
+        this.style.animation = 'wiggle 0.5s ease infinite';
+      });
+
+      edge.addEventListener('mouseleave', function() {
+        this.style.animation = 'none';
+      });
+    });
+  });
 </script>
+
 
 <style>
   #main-head {
@@ -68,6 +128,7 @@ const clients = [
   }
 
   .hero-section {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,10 +136,13 @@ const clients = [
     height: calc(100vh - var(--navbar-height)); /* Full height minus navbar */
     text-align: center;
     padding: 0 var(--section-margin);
+    overflow: hidden; /* Ensure overflow is hidden to clip the graph animation */
   }
 
   .hero-text {
+    position: relative; /* Ensure text is above the graph */
     max-width: 800px; /* Optional: Limit the max-width of the text container */
+    z-index: 1; /* Place the text above the graph animation */
   }
 
   .hero-btns {
@@ -87,9 +151,77 @@ const clients = [
     justify-content: center;
   }
 
+  .graph-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Place the graph behind the text */
+    opacity: 0.3; /* Lower opacity to ensure it doesn't interfere with the text */
+  }
+
+  .graph-animation svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .edge {
+    stroke: var(--theme-primary);
+    stroke-width: 1; /* Thinner edges */
+    opacity: 1; /* No delay, always visible */
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawEdge 1.5s forwards; /* Smoother animation */
+    transition: opacity 0.5s ease;
+  }
+
+  .node {
+    fill: var(--theme-primary);
+    opacity: 1;
+    transition: opacity 0.3s ease; /* Removed translation animation */
+    animation: fadeIn 1s forwards;
+  }
+
+  .node:hover {
+
+    opacity: 1;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes drawEdge {
+    to {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+  }
+
+  @keyframes wiggle {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(5deg);
+    }
+    50% {
+      transform: rotate(-5deg);
+    }
+    75% {
+      transform: rotate(5deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
   @media (max-width: 768px) {
     .hero-section {
-      padding: 0 1rem; /* Add some padding on smaller screens */
+      padding: 0 1rem; /* Additional padding for smaller screens */
     }
   }
 </style>
