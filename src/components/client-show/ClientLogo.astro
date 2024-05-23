@@ -2,10 +2,30 @@
 const { alt, src: logoSrc, width, height, clientName } = Astro.props;
 ---
 
-<img
+<img class = "client_logo"
   src={logoSrc}
   alt={`${clientName} Logo${alt ? ', ' + alt : ''}`}
   width={width || "200px"}
   height={height || "auto"}
-  class="client-logo"
 />
+
+<style>
+  .client_logo{
+    border-radius: 50%;
+    margin: 1%;
+  }
+  
+.client_logos img {
+  flex: 1 0 auto; /* Make logos flex and grow/shrink */
+  margin: 0.5rem; /* Add some margin between logos */
+}
+
+.client_logo {
+  transition: transform 0.2s linear; /* Add a smooth hover effect */
+}
+
+.client_logo:hover {
+  transform: scale(1.1); /* Slightly scale up on hover */
+  cursor: pointer;
+}
+</style>

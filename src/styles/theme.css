@@ -1,18 +1,17 @@
 :root {
 	/* Theme Colors */
-	--theme-primary: hsl(0, 0%, 0%);
-	--theme-primary-hover: hsl(0, 0%, 20%);
-	--theme-on-primary: #fff;
+	--theme-primary: #572872;
+	--theme-primary-hover: #9664b9;
+	--theme-on-primary: hsl(0, 0%, 100%);
 
-	--theme-bg: #fff;
-	--theme-on-bg: #000;
+	--theme-bg: #fafafa;
+	--theme-on-bg: #0c0d0d;
 
-	--theme-surface-1: #f2f2f2;
-	--theme-on-surface-1: #000;
+	--theme-surface-1: #eef1f3;
+	--theme-on-surface-1: #0c0d0d;
 
-	--theme-surface-2: #cce6d0;
-	--theme-on-surface-2: #000;
-
+	--theme-surface-2: #072650;
+	--theme-on-surface-2: #ffffff;
 	/* Theme Shapes */
 	/* Set this to 0 if you want all of the rounded cards, images, etc to be straight edges */
 	--theme-shape-radius: clamp(1rem, 2rem, 3rem);
