@@ -32,7 +32,7 @@ const clients = [
 <Container>
   <section class="hero-section">
     <div class="graph-animation">
-      <svg viewBox="0 0 800 400" preserveAspectRatio="none">
+      <svg viewBox="0 0 800 400" preserveAspectRatio="none" id="canvas">
         <!-- Define circles (nodes) -->
         <circle class="node" cx="100" cy="100" r="5" />
         <circle class="node" cx="300" cy="150" r="5" />
@@ -92,16 +92,16 @@ const clients = [
     const edges = document.querySelectorAll('.edge');
 
     nodes.forEach((node, index) => {
-      const delay = Math.random() * 2; // Random delay between 0 and 2 seconds
+      const delay = Math.random() * 5; // Random delay between 0 and 2 seconds
       node.style.setProperty('--animation-delay', `${delay}s`);
       
-      node.addEventListener('mouseenter', function() {
-        this.style.transform = 'scale(1.5)';
-      });
+      // node.addEventListener('mouseenter', function() {
+      //   this.style.transform = 'scale(1.5)';
+      // });
 
-      node.addEventListener('mouseleave', function() {
-        this.style.transform = 'scale(1)';
-      });
+      // node.addEventListener('mouseleave', function() {
+      //   this.style.transform = 'scale(1)';
+      // });
     });
 
     edges.forEach((edge, index) => {
@@ -109,16 +109,15 @@ const clients = [
       edge.style.setProperty('--animation-delay', `${delay}s`);
     });
 
-    edges.forEach(edge => {
-      edge.addEventListener('mouseenter', function() {
-        this.style.animation = 'wiggle 0.5s ease infinite';
-      });
+    // edges.forEach(edge => {
+    //   edge.addEventListener('mouseenter', function() {
+    //     this.style.animation = 'wiggle 0.5s ease infinite';
+    //   });
 
-      edge.addEventListener('mouseleave', function() {
-        this.style.animation = 'none';
-      });
+    //   edge.addEventListener('mouseleave', function() {
+    //     this.style.animation = 'none';
+    //   });
     });
-  });
 </script>
 
 
@@ -172,15 +171,15 @@ const clients = [
     opacity: 1; /* No delay, always visible */
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
-    animation: drawEdge 1.5s forwards; /* Smoother animation */
-    transition: opacity 0.5s ease;
+    animation: drawEdge 4s forwards; /* Smoother animation */
+    transition: opacity 1s ease;
   }
 
   .node {
     fill: var(--theme-primary);
     opacity: 1;
     transition: opacity 0.3s ease; /* Removed translation animation */
-    animation: fadeIn 1s forwards;
+    animation: fadeIn 2s forwards;
   }
 
   .node:hover {
@@ -222,6 +221,9 @@ const clients = [
   @media (max-width: 768px) {
     .hero-section {
       padding: 0 1rem; /* Additional padding for smaller screens */
+    }
+    #canvas{
+      visibility: hidden;
     }
   }
 </style>
