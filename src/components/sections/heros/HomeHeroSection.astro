@@ -3,7 +3,25 @@ import { Icon } from 'astro-icon/components';
 import { Container, Button } from '@components/odyssey-theme';
 import settings from '../../../config/settings.js';
 import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
+import ClientLogos from '@components/client-show/ClientLogos.astro';
+
+const clients = [
+  {
+    logoSrc: "/path/to/client1-logo.png",
+    alt: "Description of Client 1 logo",
+    clientName: "Client 1",
+    width: "300px",
+  },
+  {
+    logoSrc: "/path/to/client2-logo.jpg",
+    clientName: "Client 2",
+    height: "150px",
+  },
+  // Add more client objects...
+];
 ---
+
+
 <Container>
   <section class="hero-section__section">
     <div class="hero-section__text">
@@ -20,7 +38,8 @@ import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
           </Fragment>
         </Button>
       </div>
-      {settings.enableThemeSwitcher && <ThemeSwitcher client:only />}
+      <ClientLogos clients={clients} />
+      <!-- {settings.enableThemeSwitcher && <ThemeSwitcher client:only />} -->
     </div>
   </section>
 </Container>

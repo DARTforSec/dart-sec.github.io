@@ -1,0 +1,56 @@
+---
+import ClientLogo from "./ClientLogo.astro";
+type Client = {
+  logoSrc: string; // Path to the client logo image
+  alt: string;     // Alt text for the logo (optional)
+  width?: string;   // Optional width for the logo (optional)
+  height?: string;  // Optional height for the logo (optional)
+  clientName: string; // Client name for display and alt text
+};
+
+const { clients } = Astro.props;
+---
+
+<div class="client-logos">
+  {clients.map((client: Client) => (
+    <ClientLogo
+      key={client.clientName}
+      src={client.logoSrc}
+      alt={`${client.clientName} Logo${client.alt ? ', ' + client.alt : ''}`}
+      width={client.width}
+      height={client.height}
+      clientName={client.clientName}
+    />
+  ))}
+</div>
+
+<style>
+    .client-logos {
+  display: flex;
+  flex-wrap: wrap; /* Wrap logos to multiple rows if needed */
+  margin: 0; /* Remove default margin for cleaner layout */
+}
+
+.client-logos img {
+  flex: 1 0 auto; /* Make logos flex and grow/shrink */
+  margin: 0.5rem; /* Add some margin between logos */
+}
+
+.client-logo {
+  border-radius: var(--border-radius); /* Use a theme variable for border radius */
+  box-shadow: var(--shadow); /* Use a theme variable for shadow */
+  transition: transform 0.2s ease-in-out; /* Add a smooth hover effect */
+}
+
+.client-logo:hover {
+  transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+/* Optional media query for responsiveness */
+@media (max-width: 768px) {
+  .client-logos img {
+    width: 50%; /* Adjust width for smaller screens */
+  }
+}
+
+</style>

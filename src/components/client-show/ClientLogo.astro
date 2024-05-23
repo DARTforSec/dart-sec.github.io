@@ -1,0 +1,11 @@
+---
+const { alt, src: logoSrc, width, height, clientName } = Astro.props;
+---
+
+<img
+  src={logoSrc}
+  alt={`${clientName} Logo${alt ? ', ' + alt : ''}`}
+  width={width || "200px"}
+  height={height || "auto"}
+  class="client-logo"
+/>
