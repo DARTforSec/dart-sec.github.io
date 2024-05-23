@@ -2,7 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import { Container, Button } from '@components/odyssey-theme';
 import settings from '../../../config/settings.js';
-import {ThemeSwitcher} from '../../theme-switcher/theme-switcher';
+import { ThemeSwitcher } from '../../theme-switcher/theme-switcher';
 import ClientLogos from '@components/client-show/ClientLogos.astro';
 
 const clients = [
@@ -29,16 +29,15 @@ const clients = [
 ];
 ---
 
-
 <Container>
-  <section class="hero-section__section">
-    <div class="hero-section__text">
-      <h1 id="main_head">DARTSEC</h1>
+  <section class="hero-section">
+    <div class="hero-text">
+      <h1 id="main-head">DARTSEC</h1>
       <p>
         A Cyber Security Startup founded by enthusiastic student researchers and
         their esteemed professor setting new standards in the realm of digital security.
       </p>
-      <div class="hero-btns__container">
+      <div class="hero-btns">
         <Button href="/theme/get-started" customIcon>
           Get Started
           <Fragment slot="icon">
@@ -52,35 +51,45 @@ const clients = [
   </section>
 </Container>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('nav'); // Adjust the selector based on your navbar element
+    const heroSection = document.querySelector('.hero-section');
+    if (navbar && heroSection) {
+      const navbarHeight = navbar.offsetHeight;
+      heroSection.style.setProperty('--navbar-height', `${navbarHeight}px`);
+    }
+  });
+</script>
+
 <style>
-  #main_head {
+  #main-head {
     color: var(--theme-primary);
   }
-  .hero-section__section {
-    margin: var(--section-margin) auto;
+
+  .hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    min-height: clamp(90vh, 100vw, calc(100vh - var(--navbar-height)));
+    height: calc(100vh - var(--navbar-height)); /* Full height minus navbar */
     text-align: center;
-  }
-  .hero-section__text {
-    justify-self: center;
+    padding: 0 var(--section-margin);
   }
 
-  /* Choose either Method 1 or Method 2: */
+  .hero-text {
+    max-width: 800px; /* Optional: Limit the max-width of the text container */
+  }
 
-  /* Method 1 (Flexbox) */
-  .hero-btns__container {
-    margin: var(--section-margin) auto;
+  .hero-btns {
+    margin: 2rem 0; /* Space above and below the buttons */
     display: flex;
     justify-content: center;
   }
 
-  /* Method 2 (`margin: 0 auto`) */
-  /* .hero-btns__container {
-    margin: 0 auto;  // Uncomment if using this method
-  } */
-
   @media (max-width: 768px) {
-    .hero-section__section {}
+    .hero-section {
+      padding: 0 1rem; /* Add some padding on smaller screens */
+    }
   }
 </style>

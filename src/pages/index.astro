@@ -1,6 +1,5 @@
 ---
 import { Container, CtaCardSection, FeatureCard, StickyTextImageSection, TextCardSection } from '@components/odyssey-theme';
-
 import Layout from '../layouts/Page.astro';
 import HomeHeroSection from '../components/sections/heros/HomeHeroSection.astro';
 
@@ -8,6 +7,7 @@ type cardData = {
 	href: string;
 	title: string;
 	imgSrc: string;
+	description: string;
 }
 
 const featureCardData = [
@@ -15,26 +15,27 @@ const featureCardData = [
     href: "/company/about",
     title: "Cyber Security R&D",
     imgSrc: "/assets/images/home/screenshots/about",
+	description: "Lorem Ipsum dolar sit amet, consectetur adipiscing elit in non proident null sunt in reprehenderit in voluptate velit",
   },
   {
 	href: "/company/legal",
     title: "GenAI Security R&D",
     imgSrc: "/assets/images/home/screenshots/legal",
+	description: "Lorem Ipsum dolar sit amet, consectetur adipiscing elit in non proident null sunt in reprehenderit in voluptate velit",
   },
   {
     href: "/company/contact",
     title: "DevOps",
     imgSrc: "/assets/images/home/screenshots/contact",
+	description: "Lorem Ipsum dolar sit amet, consectetur adipiscing elit in non proident null sunt in reprehenderit in voluptate velit",
   },
-  // ... Add data for other feature cards
   {
     href: "/company/legal",
     title: "AI Driven Development",
     imgSrc: "/assets/images/home/screenshots/legal",
+	description: "Lorem Ipsum dolar sit amet, consectetur adipiscing elit in non proident null sunt in reprehenderit in voluptate velit",
   },
-
 ];
-
 ---
 
 <Layout>
@@ -43,16 +44,17 @@ const featureCardData = [
 		<section class="feature-card__section">
 			<h2>Services</h2>
 			<p>
-				We Dabble with the following services and our experts can make your life easier 
+				We dabble with the following services and our experts can make your life easier.
 			</p>
 			<div class="feature-card__grid">
 				{featureCardData.map((feature: cardData) => (
 					<FeatureCard
-					href = {feature.href}
-					title = {feature.title}
-					imgSrc = {feature.imgSrc}
-					></FeatureCard>
-				  ))}
+						href={feature.href}
+						title={feature.title}
+						imgSrc={feature.imgSrc}
+						description={feature.description}
+					/>
+				))}
 			</div>
 		</section>
 	</Container>
@@ -61,15 +63,23 @@ const featureCardData = [
 <style>
 	.feature-card__section {
 		margin: var(--section-margin) auto;
+		text-align: center;
 	}
 	.feature-card__grid {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: var(--theme-grid-gap);
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 1.5rem;
+	}
+	@media (max-width: 1024px) {
+		.feature-card__grid {
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 1.25rem;
+		}
 	}
 	@media (max-width: 768px) {
 		.feature-card__grid {
-			grid-template-columns: 1fr;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 1rem;
 		}
 	}
 </style>

@@ -1,59 +1,86 @@
 ---
-const {href, imgSrc, title} = Astro.props;
+const {href, imgSrc, title, description} = Astro.props;
+import { Button } from "@components/odyssey-theme";
 ---
 
 <style>
-  .feature-card__card {
+  .feature-card {
     background-color: var(--theme-surface-1);
     color: var(--theme-on-surface-1);
-    border-radius: var(--theme-shape-radius);
+    border-radius: 8px; /* Less rounded corners */
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+    transition: transform 0.3s, box-shadow 0.3s;
+    max-width: 320px; /* Compact card width */
+    margin: 1rem; /* Margin around the card */
+    display: flex;
+    flex-direction: column;
+  }
+  .feature-card:hover {
+    transform: translateY(-5px); /* Slight elevation on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
   }
   .feature-card__link {
     display: block;
     text-decoration: none;
+    color: inherit;
   }
-  .featured-card__content {
-    padding: 1rem 1rem 0 1rem;
-     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow-y: hidden;
+  .feature-card__img-container {
+    position: relative;
+    overflow: hidden;
+    /* border-bottom: 1px solid var(--theme-surface-2); */
   }
-  .featured-card__content picture {
+  .feature-card__img {
     width: 100%;
-    height: 100%;
-  }
-  .feature-card__card .feature-card__img {
-    --image-shadow: 0 -0.5rem 1rem rgba(138, 138, 138, 0.12);
-    margin: 0 auto;
-    width: clamp(60%, 70%, 390px);
     height: auto;
     object-fit: cover;
-    /* border-radius: 1rem 1rem 0 0; */
-    box-shadow: var(--image-shadow);
-    transform: translateY(0.5rem);
-    transition: transform var(--theme-transition);
+    transition: transform 0.3s;
+    max-height: 180px; /* Smaller image height */
   }
-  .feature-card__card:hover .feature-card__img {
-    transform: translateY(0);
+  .feature-card:hover .feature-card__img {
+    transform: scale(1.05);
+  }
+  .feature-card__content {
+    padding: 1rem;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .feature-card__title {
     font-family: var(--theme-font-family-sans);
+    font-size: 1.2rem; /* Slightly smaller font size */
+    font-weight: 700;
+    margin: 0.5rem 0;
+    color: var(--theme-on-surface-2);
+  }
+  .feature-card__description {
+    font-size: 0.9rem; /* Smaller font size for description */
+    /* color: var(--theme-on-surface-2); */
+    margin-bottom: 0.5rem; /* Margin below the description */
+  }
+  .feature-card__button-container {
+    display: flex;
+    justify-content: center; /* Center the button */
+    margin-top: 1rem; /* Add some space above the button */
   }
 </style>
 
-
-<div class="feature-card__card">
+<div class="feature-card">
   <a class="feature-card__link" href={href}>
-    <div class="featured-card__content">
-      <h3 class="feature-card__title">{title}</h3>
-      <!-- I would like to swap this out with Astro's Image integration soon but was having some issues with it at the moment so we're going old school here. -->
+    <div class="feature-card__img-container">
       <picture>
-        <source srcset={`${imgSrc}.webp`} type="image/webp" >
-        <img class="feature-card__img" src={`${imgSrc}.png`} alt={title} loading="lazy" width="780" height="585" decoding="async" >
+        <source srcset={`${imgSrc}.webp`} type="image/webp">
+        <img class="feature-card__img" src={`${imgSrc}.png`} alt={title} loading="lazy" width="780" height="585" decoding="async">
       </picture>
     </div>
+    <div class="feature-card__content">
+      <h3 class="feature-card__title">{title}</h3>
+      <p class="feature-card__description">{description}</p>
+      <div class="feature-card__button-container">
+        <Button>Learn More</Button>
+      </div>
+    </div>
   </a>
-</div> 
-
+</div>
