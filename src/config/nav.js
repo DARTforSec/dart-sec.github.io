@@ -4,12 +4,16 @@ export const nav = [
 		slug: '/',
 	},
 	{
-		title: 'Blog',
-		slug: '/blog',
+		title: 'About',
+		slug: '/#about_us_dartsec',
 	},
 	{
-		title: 'About',
-		slug: '/company/about',
+		title: 'Services',
+		slug: '/#services_dartsec',
+	},
+	{
+		title: 'Blog',
+		slug: '/blog',
 	},
 	{
 		title: 'Contact',

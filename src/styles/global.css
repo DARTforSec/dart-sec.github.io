@@ -1,3 +1,6 @@
+html{
+	scroll-behavior: smooth;
+}
 html,
 body {
 	height: 100%;
@@ -19,3 +22,26 @@ pre {
 pre .language-id {
   display: none;
 }
+
+
+/* Target scrollbar itself (works on Chrome, Safari, Opera) */
+::-webkit-scrollbar {
+	width: 10px; /* Width of the scrollbar */
+  }
+  
+  /* Track (the background) of the scrollbar */
+  ::-webkit-scrollbar-track {
+	background: #f1f1f1; /* Color of the scrollbar track */
+  }
+  
+  /* Handle (the draggable thumb) of the scrollbar */
+  ::-webkit-scrollbar-thumb {
+	background: var(--theme-primary);
+}
+  
+  /* Handle (the draggable thumb) on hover */
+  ::-webkit-scrollbar-thumb:hover {
+	background: var(--theme-primary-hover); /* Darken the handle on hover */
+	cursor: pointer;
+  }
+  
