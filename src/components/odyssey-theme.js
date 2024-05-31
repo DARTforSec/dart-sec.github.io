@@ -16,6 +16,7 @@ export { default as FeatureCard } from './cards/FeatureCard.astro';
 
 // Sections
 export { default as TextSection } from './sections/TextSection.astro';
+export { default as ChooseUs } from './sections/choose.astro';
 export { default as TextCardSection } from './sections/TextCardSection.astro';
 export { default as CustomerQuoteSection } from './sections/CustomerQuoteSection.astro';
 export { default as ThreeColumnTextSection } from './sections/ThreeColumnTextSection.astro';

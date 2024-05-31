@@ -1,0 +1,130 @@
+---
+const { intro, expertise, customization, reliability, customerSatisfaction } = {
+  intro: "At DARTSEC, we understand that in today's rapidly evolving digital era, businesses need agile and robust IT infrastructure to stay ahead of the curve. With a team of seasoned experts and innovative thinkers, we are committed to providing comprehensive and customized solutions that cater to the unique needs of each client.",
+  expertise: "Our team consists of highly skilled professionals with extensive experience in their respective fields. We stay up-to-date with the latest technologies and best practices to deliver innovative solutions that meet the evolving needs of our clients.",
+  customization: "We understand that every business is unique. That's why we take a personalized approach to each project, working closely with our clients to understand their goals and requirements and delivering tailor-made solutions that exceed expectations.",
+  reliability: "When you partner with us, you can trust that your project is in capable hands. We pride ourselves on our reliability and commitment to delivering projects on time and within budget, ensuring a seamless experience from start to finish.",
+  customerSatisfaction: "Our success is measured by the satisfaction of our clients. We prioritize open communication, transparency, and collaboration throughout the entire project lifecycle, fostering strong, long-lasting relationships built on trust and mutual respect."
+};
+import { Button } from "@components/odyssey-theme";
+---
+
+<style>
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    .why-choose-us-section {
+      padding: 2rem;
+      margin: 2rem auto;
+    }
+    .why-choose-us-header {
+      margin-bottom: 2rem;
+      animation: fadeInUp 1s ease forwards;
+    }
+    .why-choose-us-header h2 {
+      font-family: var(--theme-font-family-sans);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--theme-primary);
+    }
+    .why-choose-us-header p {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+    .why-choose-us-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .why-choose-us__section {
+      opacity: 0;
+    }
+    .why-choose-us__section.animated {
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.5s;
+    }
+    .why-choose-us__section h3 {
+      font-family: var(--theme-font-family-sans);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--theme-primary);
+      margin-bottom: 1rem;
+    }
+    .why-choose-us__section p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    .divider {
+      border-bottom: 1px solid #ccc;
+      margin: 1rem 0;
+    }
+  
+    @media only screen and (min-width: 768px) {
+      .why-choose-us-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+  
+  <div class="why-choose-us-section" id="why-choose-us-section">
+    <div class="why-choose-us-content">
+      <div class="why-choose-us-header">
+        <h2>Why Choose Us?</h2>
+        <p>{intro}</p>
+        <div>
+          <Button>Learn more</Button>
+        </div>
+      </div>
+      <div>
+        <div class="why-choose-us__section">
+          <h3>Expertise</h3>
+          <p>{expertise}</p>
+          <div class="divider"></div>
+        </div>
+        <div class="why-choose-us__section">
+          <h3>Customization</h3>
+          <p>{customization}</p>
+          <div class="divider"></div>
+        </div>
+        <div class="why-choose-us__section">
+          <h3>Reliability</h3>
+          <p>{reliability}</p>
+          <div class="divider"></div>
+        </div>
+        <div class="why-choose-us__section">
+          <h3>Customer Satisfaction</h3>
+          <p>{customerSatisfaction}</p>
+          <div class="divider"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    const sections = document.querySelectorAll('.why-choose-us__section');
+    const options = {
+      threshold: 0.2
+    };
+  
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animated');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, options);
+  
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+  
