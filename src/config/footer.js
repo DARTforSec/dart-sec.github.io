@@ -17,23 +17,7 @@ export const footerSocials = [
 ]
 
 export const footerLists = [
-	// {
-	// 	title: 'Services',
-	// 	items: [
-	// 		{
-	// 			title: 'Landing Page 1',
-	// 			slug: '/landing-pages/landing-1',
-	// 		},
-	// 		{
-	// 			title: 'Landing Page 2',
-	// 			slug: '/landing-pages/landing-2',
-	// 		},
-    //   // {
-	// 		// 	title: 'Landing Page 3',
-	// 		// 	slug: '/landing-pages/landing-3',
-	// 		// },
-	// 	],
-	// },
+
 	{
 		title: 'Company',
 		items: [
@@ -48,6 +32,33 @@ export const footerLists = [
 			{
 				title: 'Contact',
 				slug: '/company/contact',
+			},
+		],
+	},
+	{
+		title: 'Services',
+		items: [
+			{
+				title: 'Security R&D',
+				slug: '/#services_Excaliat',
+			},
+			{
+				title: 'GenAI Security R&D',
+				slug: '/#services_Excaliat',
+			},
+			{
+				title: 'Custom Engineering',
+				slug: '/#services_Excaliat',
+			},
+		],
+	},
+
+	{
+		title: 'Location',
+		items: [
+			{
+				title: 'CL-3 Abdalian Society',
+				slug: '/',
 			},
 		],
 	},

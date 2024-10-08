@@ -5,11 +5,11 @@ export const nav = [
 	},
 	{
 		title: 'About',
-		slug: '/#about_us_dartsec',
+		slug: '/#about_us_Excaliat',
 	},
 	{
 		title: 'Services',
-		slug: '/#services_dartsec',
+		slug: '/#services_Excaliat',
 	},
 	{
 		title: 'Blog',
